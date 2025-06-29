@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".productdetailActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Thanh top: nút quay lại, trái tim, giỏ hàng -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp">
+
+            <!-- Nút quay lại -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="35dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/muiten" />
+            </FrameLayout>
+
+            <!-- View đẩy 2 icon về phải -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <!-- Trái tim -->
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#0EFAF9F9"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/tr_i_tim" />
+
+            <!-- Giỏ hàng -->
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp">
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/giohang" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Nội dung cuộn -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageButton
+                    android:id="@+id/imgShoe"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:backgroundTint="#F7FFFFFF"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/nike1" />
+
+                <TextView
+                    android:id="@+id/txtProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nike Air Jordan X"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:id="@+id/txtCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Men's Shoes"
+                    android:textSize="14sp"
+                    android:textColor="#888888" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.9 (130 reviews)"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rs. 12,067"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#E53935"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select Size"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical">
+
+                    <Button
+                        android:id="@+id/btnMinus"
+                        android:text="-"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+
+                    <TextView
+                        android:id="@+id/txtQuantity"
+                        android:text="1"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+
+                    <Button
+                        android:id="@+id/btnPlus"
+                        android:text="+"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="24dp" />
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The Nike Air Jordan X is designed for performance and style. Made with high-quality materials, it offers comfort, durability, and iconic design for sneaker lovers."
+                    android:textSize="14sp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btnBuy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add to Cart"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#000000"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
