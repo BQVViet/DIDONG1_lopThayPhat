@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".loginActivity">
 
     <ImageView
@@ -143,26 +144,63 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="centerInside"
+=======
+    android:background="#FBF8F8"
+    android:foregroundTint="#6F6E6E"
+    tools:context=".loginActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="353dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
             app:srcCompat="@drawable/fb" />
 
         <ImageView
             android:id="@+id/imageView6"
+<<<<<<< HEAD
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="centerInside"
+=======
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
             app:srcCompat="@drawable/tw" />
 
         <ImageView
             android:id="@+id/imageView8"
+<<<<<<< HEAD
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="centerInside"
+=======
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
             app:srcCompat="@drawable/ig" />
 
         <ImageView
             android:id="@+id/imageView9"
+<<<<<<< HEAD
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -170,4 +208,152 @@
             app:srcCompat="@drawable/tiktok" />
     </LinearLayout>
 
+=======
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/tiktok" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="16dp"
+        android:text="Login"
+        android:textColor="#140D0D"
+        android:textSize="90sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="38dp"
+        android:text="Sign Up"
+        android:textColor="#8C8989"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="210dp"
+        android:layout_height="219dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#767474"
+        app:layout_constraintBottom_toTopOf="@+id/txtUsename"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/_f9470b34a8e3f526dbdb022f9f19cf73f9470b34a8e3f526dbdb022f9f19cf73f9470b34a8e3f526dbdb022f9f19cf7" />
+
+    <EditText
+        android:id="@+id/txtUsename"
+        android:layout_width="394dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Usename or email address"
+        android:textColor="#6B717070"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="394dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="35dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Password"
+        android:textColor="#6B717070"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsename" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsename"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsename"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/view_eye_icon_152220" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="394dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="9dp"
+        android:backgroundTint="#CFFFFFFF"
+        android:text="Đăng Nhập"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnregister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="394dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#E7FFFFFF"
+        android:text="Đăng Ký"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="159dp"
+        android:text="Login with"
+        android:textColor="#161414"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnregister" />
+
+
+
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
 </androidx.constraintlayout.widget.ConstraintLayout>

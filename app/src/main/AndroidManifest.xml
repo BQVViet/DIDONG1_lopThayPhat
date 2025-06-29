@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/Theme.BuiViet_2123110186"
         tools:targetApi="31">
 
@@ -33,6 +34,10 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+=======
+        android:theme="@style/Theme.BuiQuocViet_2123110186"
+        tools:targetApi="31">
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
         <activity
             android:name=".HomeActivity"
             android:exported="true">
@@ -42,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".registerActivity"
             android:exported="false">
@@ -72,6 +78,27 @@
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
+=======
+
+        <activity
+            android:name=".loginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".registerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> a8c70d751794c76387749c6edb621c45139d0811
         </activity>
     </application>
 
