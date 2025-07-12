@@ -16,55 +16,64 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class registerActivity extends AppCompatActivity {
 
+    EditText edtEmail, edtUsername, edtPassword, edtConfirmPassword;
+    Button btnSignup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
+
+        // Áp dụng insets để tránh che view bởi status/navigation bar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button btnSignup = findViewById(R.id.btnSignup);
 
+        // Ánh xạ các thành phần giao diện
+        edtEmail = findViewById(R.id.txtEmail);
+        edtUsername = findViewById(R.id.txtUse);          // Lưu ý: ID = txtUse
+        edtPassword = findViewById(R.id.txtPasswordd);    // Lưu ý: ID = txtPasswordd
+        edtConfirmPassword = findViewById(R.id.txtNBPassword);
+        btnSignup = findViewById(R.id.btnSignup);
+
+        // Bắt sự kiện nút Đăng ký
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edtEmail = findViewById(R.id.txtEmail);
-                EditText edtUsername = findViewById(R.id.txtUsenamee);
-                EditText edtPassword = findViewById(R.id.txtPasswordd);
-                EditText edtConfirmPassword = findViewById(R.id.txtNBPassword);
-
                 String email = edtEmail.getText().toString().trim();
                 String username = edtUsername.getText().toString().trim();
                 String password = edtPassword.getText().toString();
                 String confirmPassword = edtConfirmPassword.getText().toString();
 
-                // Kiểm tra các ô nhập
+                // Kiểm tra dữ liệu nhập
                 if (email.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(registerActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!password.equals(confirmPassword)) {
-                    Toast.makeText(getApplicationContext(), "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(registerActivity.this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Bước 1: Lưu thông tin vào SharedPreferences
+                // Lưu username và password vào SharedPreferences
                 SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("username", username);
                 editor.putString("password", password);
-                editor.apply(); // Lưu lại
+                editor.apply();
 
-                Toast.makeText(getApplicationContext(), "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(registerActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
 
-                // Chuyển sang màn hình đăng nhập
-                Intent intent = new Intent(getApplicationContext(), loginActivity.class);
+                // Truyền dữ liệu sang login để điền sẵn
+                Intent intent = new Intent(registerActivity.this, loginActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
                 startActivity(intent);
-                finish(); // Đóng màn hình đăng ký
+                finish();
             }
         });
     }

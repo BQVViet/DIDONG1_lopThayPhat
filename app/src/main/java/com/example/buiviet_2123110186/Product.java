@@ -4,36 +4,69 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
     private String name;
-    private String category;
-    private String image;       // tên file ảnh (không bao gồm đuôi .png)
-    private double price;
-    private double rating;
-    private String description;
+    private String category;      // dùng để lọc
+    private String colors;
+    private String price;
+    private String discount;
+    private int imageResId;
 
-    // Constructor
-    public Product(String name, String category, String image, double price, double rating, String description) {
+    // Constructor đầy đủ
+    public Product(String name, String category, String colors, String price, String discount, int imageResId) {
         this.name = name;
         this.category = category;
-        this.image = image;
+        this.colors = colors;
         this.price = price;
-        this.rating = rating;
-        this.description = description;
+        this.discount = discount;
+        this.imageResId = imageResId;
     }
 
-    // Getter
-    public String getName() { return name; }
-    public String getCategory() { return category; }
-    public String getImage() { return image; }
-    public double getPrice() { return price; }
-    public double getRating() { return rating; }
-    public String getDescription() { return description; }
+    // Getters
+    public String getName() {
+        return name;
+    }
 
-    // Optional: Setter nếu bạn muốn chỉnh sau
-    public void setName(String name) { this.name = name; }
-    public void setCategory(String category) { this.category = category; }
-    public void setImage(String image) { this.image = image; }
-    public void setPrice(double price) { this.price = price; }
-    public void setRating(double rating) { this.rating = rating; }
-    public void setDescription(String description) { this.description = description; }
+    public String getCategory() {
+        return category;
+    }
+
+    public String getColors() {
+        return colors;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public int getImageResId() {
+        return imageResId;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setColors(String colors) {
+        this.colors = colors;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
+    }
 }
-
