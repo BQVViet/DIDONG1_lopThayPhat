@@ -22,7 +22,7 @@ import java.util.List;
 
 public class homeActivity extends AppCompatActivity {
 
-    private ImageButton btnaccount, btnCart;
+    private ImageButton btnaccount, btnCart,nav_search;
     private RecyclerView recyclerView, recyclerProductDiscount;
     private ProductAdapter productAdapter;
     private ProductAdapter discountAdapter;
@@ -48,6 +48,7 @@ public class homeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewNewProducts);
         recyclerProductDiscount = findViewById(R.id.recyclerProductDiscount);
         EditText searchEditText = findViewById(R.id.searchEditText);
+        nav_search = findViewById(R.id.nav_search);
 
         // Gán dữ liệu
         allProducts.add(new Product("Converse Chuck 70", "Running", "+2 màu sắc", "950.000₫", "Giảm 8%", R.drawable.nike5));
@@ -76,7 +77,7 @@ public class homeActivity extends AppCompatActivity {
         // Chuyển trang
         btnCart.setOnClickListener(v -> startActivity(new Intent(homeActivity.this, cartActivity.class)));
         btnaccount.setOnClickListener(v -> startActivity(new Intent(homeActivity.this, accountActivity.class)));
-
+        nav_search.setOnClickListener(v -> startActivity(new Intent(homeActivity.this, notificationActivity.class)));
         // Nút lọc danh mục
         Button btnAll = findViewById(R.id.button7);
         Button btnRunning = findViewById(R.id.button8);

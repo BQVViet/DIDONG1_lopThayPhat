@@ -4,12 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.BreakIterator;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
@@ -43,15 +46,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public static class CartViewHolder extends RecyclerView.ViewHolder {
+        public BreakIterator category;
+        CheckBox checkbox;
         ImageView image;
-        TextView name, category, price;
+        TextView name, size, price, quantity;
+        Button btnIncrease, btnDecrease;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.productImage);
-            name = itemView.findViewById(R.id.productName);
-            category = itemView.findViewById(R.id.productCategory);
-            price = itemView.findViewById(R.id.productPrice);
+            checkbox = itemView.findViewById(R.id.checkbox_select);
+            image = itemView.findViewById(R.id.img_product);
+            name = itemView.findViewById(R.id.tv_product_name);
+            size = itemView.findViewById(R.id.tv_product_size);
+            price = itemView.findViewById(R.id.tv_product_price);
+            quantity = itemView.findViewById(R.id.tv_quantity);
+            btnIncrease = itemView.findViewById(R.id.btn_increase);
+            btnDecrease = itemView.findViewById(R.id.btn_decrease);
         }
     }
 }
+

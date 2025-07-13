@@ -50,23 +50,6 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
-    public void setColors(String colors) {
-        this.colors = colors;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
-
-    public void setImageResId(int imageResId) {
-        this.imageResId = imageResId;
-    }
 }
+

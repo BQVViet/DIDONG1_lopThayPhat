@@ -1,84 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:background="#FFFFFF"
-    android:elevation="5dp"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="8dp">
-
-    <ImageView
-        android:id="@+id/productImage"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/nike5" />
-
-    <TextView
-        android:id="@+id/productName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Tên sản phẩm"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/productCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Danh mục"
-        android:textColor="#666666"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/productColors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:text="+4 màu sắc"
-        android:textColor="#3B75F2"
-        android:textSize="12sp" />
+    android:layout_marginBottom="12dp"
+    android:elevation="2dp"
+    android:radius="12dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="start"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingHorizontal="8dp">
+        android:padding="12dp">
 
-        <TextView
-            android:id="@+id/productPrice"
-            android:layout_width="match_parent"
+        <!-- Checkbox -->
+        <CheckBox
+            android:id="@+id/checkbox_select"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12.067₫"
-            android:textColor="#000000"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:id="@+id/productDiscount"
-            android:layout_width="match_parent"
+        <!-- Ảnh sản phẩm -->
+        <ImageView
+            android:id="@+id/img_product"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop" />
+
+        <!-- Thông tin sản phẩm -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Giảm 14%"
-            android:textColor="#FF6B00"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Tên sản phẩm"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_product_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Size 42"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="$171.88"
+                android:textColor="#1E1E1E"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Nút tăng/giảm -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_decrease"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:backgroundTint="#EEEEEE"
+                android:text="-"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_increase"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:backgroundTint="#EEEEEE"
+                android:text="+"
+                android:textColor="#000000" />
+        </LinearLayout>
     </LinearLayout>
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Xoá"
-        android:src="@android:drawable/ic_menu_delete" />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

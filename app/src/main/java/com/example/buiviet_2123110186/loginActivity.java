@@ -16,16 +16,19 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class loginActivity extends AppCompatActivity {
 
     EditText txtUsername, txtPassword;
     Button btnLogin, btnRegister;
-    ImageView imageView4; // 👈 Thêm dòng này
+    ImageView imageView4;
+
+    private static final String API_URL = "https://68726d5e76a5723aacd4a9e8.mockapi.io/buiviet/api/v1/users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,97 +36,91 @@ public class loginActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        // Đảm bảo layout chính có ID là "main"
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Ánh xạ view từ layout
         txtUsername = findViewById(R.id.txtUsename);
         txtPassword = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnregister);
-        imageView4 = findViewById(R.id.imageView4); // 👈 Ánh xạ nút mắt
+        imageView4 = findViewById(R.id.imageView4);
 
-        // 👁 Xử lý hiện/ẩn mật khẩu
         final boolean[] isPasswordVisible = {false};
         imageView4.setOnClickListener(v -> {
             if (isPasswordVisible[0]) {
                 txtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                imageView4.setImageResource(R.drawable.view_eye_icon); // mắt đóng
+                imageView4.setImageResource(R.drawable.view_eye_icon);
                 isPasswordVisible[0] = false;
             } else {
                 txtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                imageView4.setImageResource(R.drawable.view_eye_icon); // mắt mở
+                imageView4.setImageResource(R.drawable.view_eye_icon);
                 isPasswordVisible[0] = true;
             }
-            txtPassword.setSelection(txtPassword.getText().length()); // giữ con trỏ ở cuối
+            txtPassword.setSelection(txtPassword.getText().length());
         });
 
-        // Nhận dữ liệu từ trang đăng ký (nếu có)
         Intent intent = getIntent();
-        String receivedUsername = intent.getStringExtra("username");
-        String receivedPassword = intent.getStringExtra("password");
+        txtUsername.setText(intent.getStringExtra("username"));
+        txtPassword.setText(intent.getStringExtra("password"));
 
-        if (receivedUsername != null && receivedPassword != null) {
-            txtUsername.setText(receivedUsername);
-            txtPassword.setText(receivedPassword);
-        }
-
-        // Xử lý nút Đăng nhập
         btnLogin.setOnClickListener(v -> {
             String username = txtUsername.getText().toString().trim();
             String password = txtPassword.getText().toString().trim();
-            handleLogin(username, password);
+            handleLoginWithMockAPI(username, password);
         });
 
-        // Chuyển sang màn đăng ký
         btnRegister.setOnClickListener(v -> {
             Intent i = new Intent(loginActivity.this, registerActivity.class);
             startActivity(i);
         });
     }
 
-    // Hàm xử lý đăng nhập qua FakeStore API
-    private void handleLogin(String username, String password) {
+    private void handleLoginWithMockAPI(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String url = "https://fakestoreapi.com/auth/login";
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        try {
-            JSONObject jsonBody = new JSONObject();
-            jsonBody.put("username", username);
-            jsonBody.put("password", password);
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET,
+                API_URL,
+                null,
+                response -> {
+                    boolean isMatch = false;
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
-                    response -> {
+                    for (int i = 0; i < response.length(); i++) {
                         try {
-                            String token = response.getString("token");
-                            Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                            JSONObject user = response.getJSONObject(i);
+                            String apiUsername = user.getString("username");
+                            String apiPassword = user.getString("password");
 
-                            // Có thể lưu token nếu cần
-                            Intent intent = new Intent(loginActivity.this, homeActivity.class);
-                            startActivity(intent);
-                            finish();
+                            if (username.equals(apiUsername) && password.equals(apiPassword)) {
+                                isMatch = true;
+                                break;
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Toast.makeText(this, "Đăng nhập thất bại (lỗi phản hồi).", Toast.LENGTH_SHORT).show();
                         }
-                    },
-                    error -> {
-                        Toast.makeText(this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
-                    });
+                    }
 
-            queue.add(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Lỗi tạo dữ liệu đăng nhập.", Toast.LENGTH_SHORT).show();
-        }
+                    if (isMatch) {
+                        Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(loginActivity.this, homeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    Toast.makeText(this, "Lỗi kết nối: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+
+        queue.add(request);
     }
 }
