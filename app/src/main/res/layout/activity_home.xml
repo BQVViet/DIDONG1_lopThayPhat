@@ -30,12 +30,12 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageButton
-                android:id="@+id/ButtonMenu"
+                android:id="@+id/Buttongiay"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/icon_menu" />
+                app:srcCompat="@drawable/icon_giay" />
 
             <View
                 android:layout_width="0dp"

@@ -83,7 +83,7 @@
             android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Thanh toán ngay"
+            android:text="Thanh toán"
             android:textSize="16sp"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
